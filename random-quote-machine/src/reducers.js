@@ -1,14 +1,38 @@
-const FETCH_QUOTE = "FETCH_QUOTE";
+import { combineReducers } from "redux";
+import {
+  FETCH_QUOTE,
+  FETCH_QUOTE_REQUEST,
+  FETCH_QUOTE_SUCCESS,
+  FETCH_QUOTE_FAILURE,
+} from "./actions.js";
 
-// reducer for fetching quotes
-export const rootReducer = (
-  state = { quotes: [], isFetching: false },
-  action
-) => {
+// reducer for fetching a random quote
+export const fetchQuoteReducer = (state = { text: "", author: "" }, action) => {
+  // q: how do I access the action creator's payload?
+  // a: action.payload
+  // https://stackoverflow.com/questions/39418555/how-to-access-action-creators-payload
+
   switch (action.type) {
-    case FETCH_QUOTE:
-      return { ...state, isFetching: true };
+    case FETCH_QUOTE_SUCCESS:
+      return {
+        text: action.payload.text,
+        author: action.payload.author,
+      };
+    case FETCH_QUOTE_FAILURE:
+      return {
+        text: "FETCHING FAILED!",
+        author: "Thom Veldpaus",
+      };
+    case FETCH_QUOTE_REQUEST:
+      return state;
     default:
       return state;
   }
 };
+
+// root reducer, for combining all reducers
+const rootReducer = combineReducers({
+  quote: fetchQuoteReducer,
+});
+
+export default rootReducer;
