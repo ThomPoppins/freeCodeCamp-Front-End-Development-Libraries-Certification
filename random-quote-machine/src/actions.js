@@ -11,7 +11,6 @@
 
 import axios from "axios";
 
-export const FETCH_QUOTE = "FETCH_QUOTE";
 export const FETCH_QUOTE_REQUEST = "FETCH_QUOTE_REQUEST";
 export const FETCH_QUOTE_SUCCESS = "FETCH_QUOTE_SUCCESS";
 export const FETCH_QUOTE_FAILURE = "FETCH_QUOTE_FAILURE";

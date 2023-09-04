@@ -1,6 +1,5 @@
 import { combineReducers } from "redux";
 import {
-  FETCH_QUOTE,
   FETCH_QUOTE_REQUEST,
   FETCH_QUOTE_SUCCESS,
   FETCH_QUOTE_FAILURE,
